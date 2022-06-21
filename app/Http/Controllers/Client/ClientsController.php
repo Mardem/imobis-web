@@ -111,6 +111,14 @@ class ClientsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $status = $this->repository->delete($id);
+
+        if ($status) {
+            session()->flash('success', "O usuário foi apagado com sucesso!");
+        } else {
+            session()->flash('error', "O usuário foi não apagado com sucesso!");
+        }
+
+        return redirect()->back();
     }
 }

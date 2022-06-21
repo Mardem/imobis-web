@@ -105,7 +105,7 @@
 
                                                             <br><br>
                                                             <small>
-                                                                Para registrar um cliente basta você clicar no botão abaixo
+                                                                Para registrar um lead basta você clicar no botão abaixo
                                                                 ou
                                                                 ir pelo menu lateral a esquerda.
                                                             </small>
