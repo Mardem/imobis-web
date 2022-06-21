@@ -16,22 +16,6 @@
 
 <li class="dropdown">
     <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
-        <i class=" fas fa-building"></i><span>Empresas</span>
-    </a>
-    <ul class="dropdown-menu">
-        <li><a class="nav-link" href="{{ route('enterprise.index') }}">Todas empresas</a></li>
-        <li><a class="nav-link" href="{{ route('enterprise.create') }}">Nova empresa</a></li>
-    </ul>
-</li>
-
-<li class="side-menus ">
-    <a class="nav-link" href="/">
-        <i class=" fas fa-map"></i><span>Endereços</span>
-    </a>
-</li>
-
-<li class="dropdown">
-    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
         <i class=" fas fa-users"></i><span>Clientes</span>
     </a>
     <ul class="dropdown-menu">
@@ -40,3 +24,22 @@
     </ul>
 </li>
 
+<li class="dropdown">
+    <a href="#" class="nav-link has-dropdown" data-toggle="dropdown">
+        <i class=" fas fa-users"></i><span>Usuários</span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="nav-link" href="{{ route('users.index') }}">Todas usuários</a></li>
+        <li><a class="nav-link" href="{{ route('users.create') }}">Novo usuário</a></li>
+    </ul>
+</li>
+
+
+<li class="side-menus ">
+    <a class="nav-link text-danger" href="{{ url('logout') }}" onclick="event.preventDefault(); localStorage.clear();  document.getElementById('logout-form').submit();">
+        <i class=" fas fa-sign-out-alt"></i><span>Logout</span>
+    </a>
+    <form id="logout-form" action="{{ url('/logout') }}" method="POST" class="d-none">
+        {{ csrf_field() }}
+    </form>
+</li>

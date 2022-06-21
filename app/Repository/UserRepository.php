@@ -4,7 +4,14 @@
 namespace App\Repository;
 
 
-class UserRepository
+use App\Models\User;
+use Illuminate\Database\Eloquent\Model;
+
+class UserRepository extends BaseRepository
 {
 
+    protected function model(): Model
+    {
+        return new User();
+    }
 }
