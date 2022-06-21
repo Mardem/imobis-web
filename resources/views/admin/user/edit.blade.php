@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="card-footer justify-content-end">
-                                <button class="btn btn-success" type="submit">Cadastrar</button>
+                                <button class="btn btn-success" type="submit">Editar</button>
                             </div>
                         </div>
                     </form>

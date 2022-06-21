@@ -29,7 +29,7 @@
         <i class=" fas fa-users"></i><span>Usuários</span>
     </a>
     <ul class="dropdown-menu">
-        <li><a class="nav-link" href="{{ route('users.index') }}">Todas usuários</a></li>
+        <li><a class="nav-link" href="{{ route('users.index') }}">Todos usuários</a></li>
         <li><a class="nav-link" href="{{ route('users.create') }}">Novo usuário</a></li>
     </ul>
 </li>

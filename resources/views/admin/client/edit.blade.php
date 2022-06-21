@@ -86,7 +86,6 @@
                                                         <td scope="row" width="20%">{{ $detail->id }}</td>
                                                         <td width="50%">{{ $detail->name }}</td>
                                                         <td width="30%">
-                                                            <button class="btn btn-info btn-block">Alterar</button>
                                                             <button class="btn btn-outline-danger btn-remove" data-id="{{ $detail->id }}">Remover</button>
                                                         </td>
                                                     </tr>
