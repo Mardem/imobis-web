@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::redirect('/', '/login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
