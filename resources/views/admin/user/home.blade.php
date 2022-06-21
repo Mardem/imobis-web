@@ -5,7 +5,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Todos clientes ({{ $data->count() }})</h1>
+            <h1>Todos usuários ({{ $data->count() }})</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('admin.home') }}">Dashboard</a></div>
                 <div class="breadcrumb-item"><a href="{{ route('enterprise.index') }}">Empresas</a></div>
@@ -17,9 +17,9 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header justify-content-between">
-                            <p>Veja todos os clientes registrados</p>
-                            <a href="{{ route('clients.create') }}" class="btn btn-primary">
-                                <i class="fa fa-plus"></i> Novo cliente
+                            <p>Veja todos os usuários registrados</p>
+                            <a href="{{ route('users.create') }}" class="btn btn-primary">
+                                <i class="fa fa-plus"></i> Novo usuário
                             </a>
                         </div>
                         <div class="card-body">
@@ -40,11 +40,11 @@
                                         <td>{{ $item->email }}</td>
                                         <td>
 
-                                            <a href="{{ route('clients.edit', $item->id) }}"
+                                            <a href="{{ route('users.edit', $item->id) }}"
                                                class="btn btn-warning">
                                                 Editar
                                             </a>
-                                            <form action="{{ route('enterprise.destroy', $item->id) }}"
+                                            <form action="{{ route('users.destroy', $item->id) }}"
                                                   id="form-{{ $item->id }}"
                                                   onsubmit="deleteItem('#form-{{ $item->id }}')" method="post">
                                                 @method('DELETE')

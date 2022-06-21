@@ -32,7 +32,7 @@ async function addDetail(route, clientId){
                     Swal.fire({
                         position: 'center',
                         toast: true,
-                        icon: 'success',
+                        icon: 'error',
                         title: data.message,
                         showConfirmButton: false,
                         timer: 1500

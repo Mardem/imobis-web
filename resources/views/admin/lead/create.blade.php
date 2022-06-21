@@ -15,7 +15,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="{{ route('leads.store') }}" method="post">
+                    <form action="{{ route('leads.store') }}" method="post" id="form">
                         @csrf
 
                         <div class="card">
@@ -66,7 +66,7 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>Orçamento inicial<b class="text-danger">*</b></label>
-                                            <input type="text" id="budget" name="budget" class="form-control money" required>
+                                            <input type="number" min="0" id="budget" name="budget" class="form-control money" required>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,6 @@
 
     <script>
         $('#phone').mask('(00) 0 0000-0000');
-        $('.money').mask("#.##0.00", {reverse: true});
     </script>
 
 @endsection

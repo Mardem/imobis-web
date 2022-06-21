@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\Enterprise\EnterpriseController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Client\ClientsController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,5 +33,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('enterprise', EnterpriseController::class);
     Route::resource('clients', ClientsController::class);
     Route::resource('leads', LeadController::class);
+    Route::resource('users', UserController::class);
 });
 Route::resource('test', TestController::class);

@@ -1,14 +1,13 @@
 @extends('layouts.app')
-@section('title', 'Edição de cliente')
 
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h1>Editar cliente {{ $data->name }}</h1>
+            <h1>Edição de usuário • {{ $user->name }}</h1>
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{ route('admin.home') }}">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="{{ route('clients.index') }}">Clientes</a></div>
-                <div class="breadcrumb-item">Edição de cliente - {{ $data->name }}</div>
+                <div class="breadcrumb-item"><a href="{{ route('users.index') }}">Usuários</a></div>
+                <div class="breadcrumb-item">Edição de usuário</div>
             </div>
         </div>
         <div class="section-body">
@@ -16,107 +15,90 @@
 
             <div class="row">
                 <div class="col-lg-12">
+                    <form action="{{ route('users.update', $user->id) }}" method="post" id="form">
+                        @csrf
+                        @method('PUT')
 
-                    <div class="card">
-                        <div class="card-header justify-content-between">
-                            <h4>Dados do cliente - {{ $data->name }}</h4>
-                        </div>
-                        <div class="card-body">
-                            <form action="{{ route('clients.update', $data->id) }}" method="post">
-                                @method('PUT')
-                                @csrf
-
+                        <div class="card">
+                            <div class="card-header justify-content-between">
+                                <h4>Edição de usuário • {{ $user->name }}</h4>
+                            </div>
+                            <div class="card-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
-                                            <label>Nome<b class="text-danger">*</b></label>
+                                            <label>Nome do usuário<b class="text-danger">*</b></label>
                                             <input type="text" class="form-control" name="name"
-                                                   value="{{ $data->name }}" required>
+                                                   value="{{ $user->name }}">
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label>E-mail<b class="text-danger">*</b></label>
-                                            <input type="text" id="email" name="email"
-                                                   value="{{ $data->email }}" class="form-control" required>
+                                            <input type="email" id="email" name="email" class="form-control"
+                                                   value="{{ $user->email }}" required>
                                         </div>
                                     </div>
-                                </div>
-                                <button class="btn btn-success" type="submit">Editar</button>
-
-                            </form>
-                            <hr>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h2 class="section-title">Outras infos.</h2>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label>Colaborador responsável</label>
-                                                <p>{{ $data->colab->name }}</p>
-                                            </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Senha<b class="text-danger">*</b></label>
+                                            <input type="password" id="password" name="password" class="form-control"
+                                                   required>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <div class="card-header justify-content-between align-content-center align-items-center">
-                                        <h2 class="section-title">Detalhes do usuário</h2>
-                                        <button type="button" id="add-detail" class="btn btn-primary">
-                                            <i class="fa fa-plus"></i> Novo detalhe
-                                        </button>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12">
-
-
-                                            <table class="table">
-                                                <thead>
-                                                <tr>
-                                                    <th width="25%">#</th>
-                                                    <th width="50%">Detalhe</th>
-                                                    <th width="25%">Ações</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                @foreach($data->details as $detail)
-                                                    <tr>
-                                                        <td scope="row" width="20%">{{ $detail->id }}</td>
-                                                        <td width="50%">{{ $detail->name }}</td>
-                                                        <td width="30%">
-                                                            <button class="btn btn-info btn-block">Alterar</button>
-                                                            <button class="btn btn-outline-danger btn-remove" data-id="{{ $detail->id }}">Remover</button>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-                                                </tbody>
-                                            </table>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <label>Confirmar senha<b class="text-danger">*</b></label>
+                                            <input type="password" id="confirm_password" name="confirm_password"
+                                                   class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-footer justify-content-end">
+                                <button class="btn btn-success" type="submit">Cadastrar</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>
         </div>
     </section>
 @endsection
-@section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+@push('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('js/client/client.js') }}"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
     <script>
-        $('#add-detail').on('click', async function () {
-            await addDetail('{{ route('client-detail.store') }}', {{ $data->id }});
+        $("#form").validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: "required",
+                confirm_password: {
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                name: "Digite o nome do usuário",
+                email: {
+                    required: "Digite o e-mail do usuário",
+                    email: "Digite um e-mail válido"
+                },
+                password: {
+                    required: "Por favor, digite uma senha",
+                },
+                confirm_password: {
+                    equalTo: "As senhas precisam ser iguais!",
+                    required: "Por favor, digite uma senha",
+                }
+            }
         });
-        $('.btn-remove').on('click', async function () {
-            await remove('{{ route('client-detail.destroy', $data->id) }}', $(this).data('id'));
-        });
-    </script>
 
-@endsection
+    </script>
+@endpush
