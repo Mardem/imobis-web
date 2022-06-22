@@ -23,7 +23,7 @@
                     <input aria-describedby="emailHelpBlock" id="email" type="email"
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                            placeholder="Digite o e-mail" tabindex="1"
-                           value="administrador@gmail.com" disabled autofocus
+                           value="administrador@gmail.com" autofocus
                            required>
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -35,7 +35,7 @@
                            value="Marden22@"
                            placeholder="Digite a senha"
                            class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
-                           tabindex="2" disabled required>
+                           tabindex="2" required>
                     <div class="invalid-feedback">
                         {{ $errors->first('password') }}
                     </div>
