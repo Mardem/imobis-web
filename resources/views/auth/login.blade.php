@@ -23,7 +23,7 @@
                     <input aria-describedby="emailHelpBlock" id="email" type="email"
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                            placeholder="Digite o e-mail" tabindex="1"
-                           value="{{ (Cookie::get('email') !== null) ? Cookie::get('email') : old('email') }}" autofocus
+                           value="admin@gmail.com" disabled autofocus
                            required>
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
@@ -32,7 +32,7 @@
 
                 <div class="form-group">
                     <input aria-describedby="passwordHelpBlock" id="password" type="password"
-                           value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
+                           value="Marden22@"
                            placeholder="Digite a senha"
                            class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
                            tabindex="2" required>
