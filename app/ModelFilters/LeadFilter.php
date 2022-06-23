@@ -7,16 +7,19 @@ use EloquentFilter\ModelFilter;
 class LeadFilter extends ModelFilter
 {
     /**
-    * Related Models that have ModelFilters as well as the method on the ModelFilter
-    * As [relationMethod => [input_key1, input_key2]].
-    *
-    * @var array
-    */
+     * Related Models that have ModelFilters as well as the method on the ModelFilter
+     * As [relationMethod => [input_key1, input_key2]].
+     *
+     * @var array
+     */
     public $relations = ['client', 'expenses'];
 
     public function responsible($id)
     {
-        return $this->where('responsable_id', '=', $id);
+        if ($id != '') {
+            return $this->where('responsable_id', '=', $id);
+        }
+        return $this;
     }
 
     public function stage($stage)
