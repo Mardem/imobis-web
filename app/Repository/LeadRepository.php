@@ -48,7 +48,7 @@ class LeadRepository extends BaseRepository
         try {
             return [
                 'status' => true,
-                'data' => Lead::filter($request->all())->get()
+                'data' => Lead::with($this->relationships())->filter($request->all())->get()
             ];
         } catch (\Exception $exception) {
             return [
