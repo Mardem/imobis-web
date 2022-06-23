@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\ModelFilters\LeadFilter;
+use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Lead extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable;
 
     protected $fillable = [
         'title',
@@ -96,5 +98,10 @@ class Lead extends Model
         }
 
         return number_format($total, 2, ',', '.');
+    }
+
+    public function modelFilter()
+    {
+        return $this->provideFilter(LeadFilter::class);
     }
 }

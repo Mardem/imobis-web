@@ -22,4 +22,24 @@ class ClientRepository extends BaseRepository
     {
         return $this->model;
     }
+
+    public function myClients($userId)
+    {
+        try {
+            return [
+                'status' => true,
+                'data' => $this->model->where('colab_id', '=', $userId)->get()
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'status' => true,
+                'data' => $this->model->where('colab_id', '=', $userId)->get()
+            ];
+        }
+    }
+
+    protected function relationships(): array
+    {
+        return [];
+    }
 }

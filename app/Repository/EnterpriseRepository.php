@@ -20,4 +20,9 @@ class EnterpriseRepository extends BaseRepository
     {
         return $this->model;
     }
+
+    protected function relationships(): array
+    {
+        return [];
+    }
 }

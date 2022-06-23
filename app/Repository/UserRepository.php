@@ -14,4 +14,9 @@ class UserRepository extends BaseRepository
     {
         return new User();
     }
+
+    protected function relationships(): array
+    {
+        return [];
+    }
 }

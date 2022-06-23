@@ -10,10 +10,11 @@ use Illuminate\Http\Request;
 abstract class BaseRepository
 {
     abstract protected function model(): Model;
+    abstract protected function relationships(): array;
 
     public function findById($id)
     {
-        return $this->model()->find($id);
+        return $this->model()->with($this->relationships())->find($id);
     }
 
     public function list()

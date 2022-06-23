@@ -42,4 +42,24 @@ class LeadRepository extends BaseRepository
             return false;
         }
     }
+
+    public function myLeads(Request $request)
+    {
+        try {
+            return [
+                'status' => true,
+                'data' => Lead::filter($request->all())->get()
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'status' => false,
+                'message' => 'Houve um erro ao processar a requisição!'
+            ];
+        }
+    }
+
+    protected function relationships(): array
+    {
+        return ['client', 'expenses'];
+    }
 }
