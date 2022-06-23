@@ -25,6 +25,7 @@ class AuthRepository
             if($status) {
                 return [
                     'status' => true,
+                    'data' => User::where('email', '=', $login)->first(),
                     'message' => 'Usuário autenticado com sucesso!'
                 ];
             } else {
