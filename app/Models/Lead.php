@@ -23,6 +23,16 @@ class Lead extends Model
         'client_id',
     ];
 
+    protected $appends = [
+        'stage_color_formatted',
+        'stage_formatted',
+        'description_formatted',
+        'estimated_close_formatted',
+        'total_expenses_formatted',
+        'sum_expenses',
+        'budget_formatted'
+    ];
+
     protected $dates = ['estimated_close'];
 
     public function getStageFormattedAttribute($value) // stage_formatted
@@ -46,6 +56,29 @@ class Lead extends Model
                 break;
         }
         return $text;
+    }
+
+    public function getStageColorFormattedAttribute($value) // stage_color_formatted
+    {
+
+        $stage = $this->attributes['stage'];
+        $color = '#1f9cc2';
+
+        switch ($stage) {
+            case 0:
+                $color = '#1f9cc2';
+                break;
+            case 1:
+                $color = '#cdd3d8';
+                break;
+            case 2:
+                $color = '#47c363';
+                break;
+            case 3:
+                $color = '#fc544b';
+                break;
+        }
+        return $color;
     }
 
     public function getDescriptionFormattedAttribute() // description_formatted
